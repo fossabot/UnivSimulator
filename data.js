@@ -28,6 +28,37 @@ class Player{
 }
 
 
+const playerAttr = {
+    "wealth": "财富",
+    "mood": "心情",
+    "strength": "体力",
+    "spirit": "精力",
+    "intelligence": "智商",
+    "horizon": "眼界",
+    "finance": "财商",
+    "luck": "幸运",
+    "risk": "风险",
+    "money": "金钱",
+    "year": "大学第几年",
+    "univRank": "大学",
+    "major": "专业",
+    "round": "学期规划轮次",
+    "examBase": "期末考试成绩下限",
+    "battle": "战斗力",
+    "semester": "学期",
+    "cgpa": "上学期绩点",
+    "tgpa": "总绩点"
+}
+
+const Base = {
+    "numFailedExam": "挂科次数",
+    "numCurrentFail": "本学期未通过课程",
+    "cetBase": "四级基数",
+    "shixiBase": "实习基数",
+    "kaoyanBase": "考研基数",
+    "lunwenBase": "论文基数"
+}
+
 //各显示栏
 
 //标题。随游戏推进，切换学年、学期显示

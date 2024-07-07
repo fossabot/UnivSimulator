@@ -169,9 +169,11 @@ function setUnivGame(my) {
 
     
     let mainTitle = titleBanner.createDiv();     //最上方的标题
-        
+
+    let debugDiv = debugBanner.createDiv(my);
+
     let statusDiv = statusBanner.createDiv(my);   //上方的状态栏，显示体力、心情、精力、金钱
-    
+
     let eventDiv = eventRecord.createDiv();  //重要事件列表，靠左显示
     
     let centerContainer = document.createElement("div"); //中间的显示界面
@@ -204,6 +206,7 @@ function setUnivGame(my) {
     
     mainDiv.appendChild(mainTitle);
     mainDiv.appendChild(statusDiv);
+    mainDiv.appendChild(debugDiv);
     mainDiv.appendChild(bigContainer);
 	
     document.body.appendChild(mainDiv);

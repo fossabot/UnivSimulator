@@ -77,6 +77,23 @@ const statusBanner = {
         this.horspan2.className = "plain-status-span";
         this.monspan2.className = "plain-status-span";
 
+
+        let toggleDebugButton = document.createElement("button");
+        toggleDebugButton.textContent = "调试";
+        toggleDebugButton.id = "toggleDebugButton";
+        toggleDebugButton.style.display = "none";  //默认隐藏
+        toggleDebugButton.onclick = () => {
+            debugDiv.style.display = debugDiv.style.display === "none" ? "flex" : "none";
+        };
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === '`') {
+                toggleDebugButton.style.display = toggleDebugButton.style.display === 'none' ? 'inline' : 'none';
+            }
+        })
+
+        div.appendChild(toggleDebugButton);
+
         return div;
     },
     updateDiv: function(player) {
@@ -116,6 +133,88 @@ const statusBanner = {
             this.horspan2.textContent = "***";
         }
 
+        Object.keys(playerAttr).forEach(key => {
+            document.getElementById(key).value = player[key];
+        })
+        Object.keys(Base).forEach(key => {
+            document.getElementById(key).value = eval(key);
+        })
     }
 }
 
+// 调试界面
+const debugBanner = {
+    createDiv: function(player) {
+        let div = document.createElement("div");
+        div.className = "debugDiv";
+        div.id = "debugDiv";
+        div.style.display = "none";
+
+
+        let debugTitle = document.createElement("h3");
+        debugTitle.textContent = "调试";
+        div.appendChild(debugTitle);
+
+
+        let debugTable = document.createElement("div");
+        debugTable.className = "debugTable";
+        div.appendChild(debugTable);
+
+        Object.entries(playerAttr).forEach(([key, value]) => {
+            let span = document.createElement("span");
+            let label = document.createElement("label");
+            label.htmlFor = key;
+            label.textContent = `${value}:`;
+            span.appendChild(label);
+
+            let input = document.createElement("input");
+            input.type = "number";
+            input.id = key;
+            input.value = player[key];
+            span.appendChild(input);
+            debugTable.appendChild(span);
+        })
+
+        Object.entries(Base).forEach(([key, value]) => {
+            let span = document.createElement("span");
+            let label = document.createElement("label");
+            label.htmlFor = key;
+            label.textContent = `${value}:`;
+            span.appendChild(label);
+
+            let input = document.createElement("input");
+            input.type = "number";
+            input.id = key;
+            input.value = eval(key);
+            span.appendChild(input);
+            debugTable.appendChild(span);
+        })
+
+        let updateButton = document.createElement("button");
+        updateButton.id = "updateButton";
+        updateButton.textContent = "应用";
+        updateButton.onclick = () => {
+            Object.keys(playerAttr).forEach(key => {
+                player[key] = parseInt(document.getElementById(key).value);
+            })
+            Object.keys(Base).forEach(key => {
+                eval(`${key} = parseInt(document.getElementById(key).value)`);
+            })
+            statusBanner.updateDiv(player);
+        }
+
+        let refreshButton = document.createElement("button");
+        refreshButton.id = "refreshButton";
+        refreshButton.textContent = "刷新";
+        refreshButton.onclick = () => {
+            statusBanner.updateDiv(player);
+        }
+
+        let span = document.createElement("span");
+        span.appendChild(refreshButton);
+        span.appendChild(updateButton);
+        div.appendChild(span);
+
+        return div;
+    },
+}
