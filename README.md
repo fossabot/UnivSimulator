@@ -1,4 +1,6 @@
 # 大学模拟器/UnivSimulator v0.99
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FUsu171%2FUnivSimulator.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FUsu171%2FUnivSimulator?ref=badge_shield)
+
 
 # 游戏方式：
 
@@ -57,3 +59,7 @@ v0.92：
 v0.91： 
 修复一个结局相关的bug。        
 现在欢迎页的进入游戏按钮初始设为隐藏。等资源全部加载后，再显示出来。
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FUsu171%2FUnivSimulator.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FUsu171%2FUnivSimulator?ref=badge_large)
